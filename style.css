@@ -1,0 +1,19 @@
+
+.p5Canvas {
+  /* zorg dat canvas niet groter wordt dan window
+     en behoud breedte x hoogte verhouding van 1280x720 
+   */  
+  max-width: min(100vh*1280/720, 100vw);
+  max-height: min(100vw*720/1280, 100vh);
+  
+  /* zet canvas in het midden
+   */ 
+  display:block;
+  margin: auto;
+}
+
+html, body {
+  /* verwijder marge tussen canvas en rand van window
+   */ 
+  margin: 0px;
+}

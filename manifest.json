@@ -1,0 +1,11 @@
+{
+  "name": "De Beste Game Van De Klas",
+  "short_name": "Game",
+  "icons": [{
+    "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "start_url": "index.html",
+  "display": "fullscreen"
+}

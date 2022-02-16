@@ -1,0 +1,7 @@
+{
+  "files.exclude": {
+    ".gitignore": true,
+    "p5.global-mode.d.ts": true,
+    ".git": true
+  }
+}
