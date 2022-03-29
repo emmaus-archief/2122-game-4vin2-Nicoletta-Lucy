@@ -15,7 +15,7 @@ Geef aan met [x] welke onderdelen af zijn
 ### Basisstappen
 Basis: uitleg, spelen, afgaan en punten
 - [x] 1. maak index.html, style.css en script.js met canvas
-- [x] 2. teken speler
+- [x] 2. teken speler (keyIsDown en keyCode met een for looop erbij)
         - Zet je code in de functie tekenAlles()
 - [ ] 3. beweeg speler
         - Zet je code in de functie beweegAlles()
