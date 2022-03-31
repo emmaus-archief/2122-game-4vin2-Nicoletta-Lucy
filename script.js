@@ -26,6 +26,12 @@ var spelerY = 600; // y-positie van speler
  */
 var beweegAlles = function () {
   // speler
+  if(keyIsDown(65)){
+    spelerX -= 10;
+  }
+  if(keyIsDown(68)){
+    spelerX += 10;
+  }
 
   // vijand
 
@@ -51,6 +57,7 @@ var verwerkBotsing = function () {
  */
 var tekenAlles = function () {
   // achtergrond
+  background('blue');
 
   // vijand
 
@@ -87,9 +94,6 @@ var checkGameOver = function () {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
-
-  // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
 }
 
 /**
