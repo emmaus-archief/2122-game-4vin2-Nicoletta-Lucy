@@ -11,6 +11,9 @@ Gemaakt door:
 ## Mijn planning
 Werk de planning af van boven naar beneden<br>
 Geef aan met [x] welke onderdelen af zijn
+- [] 1. blokken maken
+- [] 2. de blokken upgraden
+- [] 3. achtergrond
 
 ### Basisstappen
 Basis: uitleg, spelen, afgaan en punten
