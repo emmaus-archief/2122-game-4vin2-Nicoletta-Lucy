@@ -62,8 +62,10 @@ var tekenAlles = function () {
   background('blue');
 
   // vijand
-  rect(vijandX, vijandY, 200, 100);
-
+  round(random(1, 3));
+  rect(vijandX, vijandY, 200, 300);
+  rect(vijandX + 300, vijandY, 200, 300);
+  rect(vijandX - 300, vijandY, 200, 300);
   // kogel
 
   // speler
