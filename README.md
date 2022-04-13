@@ -14,6 +14,9 @@ Geef aan met [x] welke onderdelen af zijn
 - [] 1. blokken maken
 - [] 2. de blokken upgraden
 - [] 3. achtergrond
+- [] 4. coins
+- [] 5. politieman die achter je aan zit
+- [] 6. extra 
 
 ### Basisstappen
 Basis: uitleg, spelen, afgaan en punten
