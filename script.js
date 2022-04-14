@@ -18,6 +18,9 @@ var spelerX = 640; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 var vijandX = 540;
 var vijandY = 0;
+var metroLinksY = 100;
+var metroMiddenY = -200;
+var metroRechtsY = 0;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -27,17 +30,27 @@ var vijandY = 0;
  */
 var beweegAlles = function () {
   // speler
-  if(keyIsDown(65)){
+  if(keyIsDown(37)){
     spelerX -= 10;
   }
-  if(keyIsDown(68)){
+  if(keyIsDown(39)){
     spelerX += 10;
   }
 
   // vijand
-  vijandY += 4;
+  metroLinksY += 4;
+ metroMiddenY += 4;
+ metroRechtsY += 4;
 
   // kogel
+  if(keyIsDown(38)){
+    spelerY -=10;
+  }
+
+  if(keyIsDown(40)){
+    spelerY +=10;
+  }
+
 };
 
 /**
@@ -63,9 +76,9 @@ var tekenAlles = function () {
 
   // vijand
   round(random(1, 3));
-  rect(vijandX, vijandY, 200, 300);
-  rect(vijandX + 300, vijandY, 200, 300);
-  rect(vijandX - 300, vijandY, 200, 300);
+  rect(300, metroLinksY, 200, 300);
+  rect(600, metroMiddenY, 200, 300);
+  rect(900, metroRechtsY, 200, 300);
   // kogel
 
   // speler
@@ -99,6 +112,7 @@ var checkGameOver = function () {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
+  vijandX=random(300,600);
 }
 
 /**
