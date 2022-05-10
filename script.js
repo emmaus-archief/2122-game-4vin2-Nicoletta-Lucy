@@ -17,7 +17,7 @@ var spelStatus = SPELEN;
 const BAAN_LINKS_X = 300;
 const BAAN_MIDDEN_X = 600;
 const BAAN_RECHTS_X = 900;
-var spelerX = 640; // x-positie van speler
+var spelerX = BAAN_LINKS_X; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 var metroLinksY = 100;
 var metroMiddenY = -200;
@@ -33,11 +33,12 @@ var keyLosVorigeKeer = 0;
  */
 var beweegAlles = function () {
   // speler
-  if (spelerX === BAAN_LINKS_X && keyIsDown(37)){ // pijl rechts
-    spelerX -= BAAN_MIDDEN_X;
+  if (spelerX === BAAN_LINKS_X && keyIsDown(39)){ // pijl rechts
+    spelerX = BAAN_MIDDEN_X;
   }
-  if(keyIsDown === BAAN_RECHTS_X &&(39)){
-    spelerX += BAAN_MIDDEN_X;
+  if(keyIsDown === BAAN_RECHTS_X &&(37)){
+    
+    spelerX = BAAN_MIDDEN_X;
   }
 
   // vijand
