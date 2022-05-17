@@ -87,9 +87,9 @@ var tekenAlles = function () {
 
   // vijand
   round(random(1, 3));
-  rect(300, metroLinksY, 200, 300);
-  rect(600, metroMiddenY, 200, 300);
-  rect(900, metroRechtsY, 200, 300);
+  rect(200, metroLinksY, 200, 300);
+  rect(550, metroMiddenY, 200, 300);
+  rect(1000, metroRechtsY, 200, 300);
   // kogel
 
   // speler
