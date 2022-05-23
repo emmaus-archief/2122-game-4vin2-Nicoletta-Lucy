@@ -22,7 +22,9 @@ var spelerY = 600; // y-positie van speler
 var metroLinksY = 100;
 var metroMiddenY = -200;
 var metroRechtsY = 0;
-
+var metroLinksX = 300;
+var metroMiddenX = 600;
+var metroRechtsX = 900;
 var keyLosVorigeKeer = 0;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -64,14 +66,26 @@ var beweegAlles = function () {
  */
 var verwerkBotsing = function () {
   // botsing speler tegen metro
-  if (spelerX - vijandX < 50 &&
-      spelerX - vijandX >-50 &&
-      spelerY - vijandY < 50 &&
-      spelerY - vijandY > -50) {
+  if (spelerX - metroLinksX < 50 &&
+      spelerX - metroLinksX >-50 &&
+      spelerY - metroLinksY < 300 &&
+      spelerY - metroLinksY > -300) {
       console.log('botsing')
       }
-  
 
+  if (spelerX - metroRechtsX < 50 &&
+      spelerX - metroRechtsX >-50 &&
+      spelerY - metroRechtsY < 300 &&
+      spelerY - metroRechtsY > -300) {
+      console.log('botsing')
+      }
+
+  if (spelerX - metroMiddenX < 50 &&
+      spelerX - metroMiddenX >-50 &&
+      spelerY - metroMiddenY < 300 &&
+      spelerY - metroMiddenY > -300) {
+      console.log('botsing')
+      }
   // botsing kogel tegen metro
 
   // update punten en health
