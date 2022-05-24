@@ -36,11 +36,11 @@ var keyLosVorigeKeer = 0;
 var beweegAlles = function () {
   // speler
   if (spelerX === BAAN_LINKS_X && keyIsDown(39)){ // pijl rechts
-    spelerX = BAAN_MIDDEN_X;
+    spelerX = BAAN_MIDDEN_X && BAAN_RECHTS_X;
   }
-  if(keyIsDown === BAAN_RECHTS_X &&(37)){
-    
-    spelerX = BAAN_MIDDEN_X;
+
+  if(keyIsDown === BAAN_RECHTS_X &&(37)){ // pijl links
+    spelerX = BAAN_MIDDEN_X && BAAN_LINKS_X;
   }
 
   // vijand
