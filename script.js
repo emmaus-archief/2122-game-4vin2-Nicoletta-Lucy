@@ -14,18 +14,20 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-const BAAN_LINKS_X = 300;
-const BAAN_MIDDEN_X = 600;
-const BAAN_RECHTS_X = 900;
+const BAAN_LINKS_X = 251;
+const BAAN_MIDDEN_X = 625;
+const BAAN_RECHTS_X = 998;
 var spelerX = BAAN_LINKS_X; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 var metroLinksY = 100;
 var metroMiddenY = -200;
 var metroRechtsY = 0;
-var metroLinksX = 300;
-var metroMiddenX = 600;
+var metroLinksX = 150;
+var metroMiddenX = 525;
 var metroRechtsX = 900;
 var keyLosVorigeKeer = 0;
+
+var img;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -36,7 +38,7 @@ var keyLosVorigeKeer = 0;
 var beweegAlles = function () {
   // speler
   if (spelerX === BAAN_LINKS_X && keyIsDown(39)){ // pijl rechts
-    spelerX = BAAN_MIDDEN_X;
+    spelerX = BAAN_MIDDEN_X && BAAN_RECHTS_X;
     
   }
 
@@ -101,10 +103,13 @@ var tekenAlles = function () {
   background('blue');
 
   // vijand
+  fill(255,255,255);
   round(random(1, 3));
-  rect(200, metroLinksY, 200, 300);
-  rect(550, metroMiddenY, 200, 300);
-  rect(1000, metroRechtsY, 200, 300);
+  rect(metroLinksX, metroLinksY, 200, 300);
+  rect(metroMiddenX, metroMiddenY, 200, 300);
+  rect(metroRechtsX, metroRechtsY, 200, 300);
+  image(img, 0, 0, 100, 100);
+  
   // kogel
 
   // speler
@@ -129,7 +134,9 @@ var checkGameOver = function () {
 /* ********************************************* */
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
-
+function preload() {
+  img = loadImage('Hyperspace.png');
+}
 /**
  * setup
  * de code in deze functie wordt één keer uitgevoerd door
