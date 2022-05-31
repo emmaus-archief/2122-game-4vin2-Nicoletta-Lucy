@@ -19,7 +19,7 @@ const BAAN_MIDDEN_X = 625;
 const BAAN_RECHTS_X = 998;
 var spelerX = BAAN_LINKS_X; // x-positie van speler
 var spelerY = 600; // y-positie van speler
-var metroLinksY = 100;
+var metroLinksY = 300;
 var metroMiddenY = -200;
 var metroRechtsY = 0;
 var metroLinksX = 150;
@@ -28,6 +28,7 @@ var metroRechtsX = 900;
 var keyLosVorigeKeer = 0;
 
 var img;
+var img_background;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -100,7 +101,9 @@ var verwerkBotsing = function () {
  */
 var tekenAlles = function () {
   // achtergrond
-  background('blue');
+  fill("red");
+  rect(0,0,1280,720);// rode achtergond
+  image(img_background,0,0,1280,720); // schermvullend plaatje op de achtergrond
 
   // vijand
   fill(255,255,255);
@@ -135,7 +138,9 @@ var checkGameOver = function () {
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
 function preload() {
-  img = loadImage('Hyperspace.png');
+  img = loadImage('alien.png');
+
+  img_background = loadImage('Hyperspace.png');
 }
 /**
  * setup
