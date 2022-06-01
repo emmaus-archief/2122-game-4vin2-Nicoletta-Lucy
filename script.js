@@ -111,7 +111,7 @@ var tekenAlles = function () {
   rect(metroLinksX, metroLinksY, 200, 300);
   rect(metroMiddenX, metroMiddenY, 200, 300);
   rect(metroRechtsX, metroRechtsY, 200, 300);
-  image(img, 0, 0, 100, 100);
+  image(img, metroLinksX, metroLinksY, 100, 100);
   
   // kogel
 
@@ -138,7 +138,7 @@ var checkGameOver = function () {
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
 function preload() {
-  img = loadImage('alien.png');
+  img = loadImage('ufo.jpg');
 
   img_background = loadImage('Hyperspace.png');
 }
