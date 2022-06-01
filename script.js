@@ -38,14 +38,7 @@ var img_background;
  */
 var beweegAlles = function () {
   // speler
-  if (spelerX === BAAN_LINKS_X && keyIsDown(39)){ // pijl rechts
-    spelerX = BAAN_MIDDEN_X && BAAN_RECHTS_X;
-    
-  }
-
-  if(keyIsDown === BAAN_RECHTS_X &&(37)){ // pijl links
-    spelerX = BAAN_MIDDEN_X;
-  }
+ 
 
   // vijand
   metroLinksY += 4;
@@ -63,6 +56,26 @@ var beweegAlles = function () {
 
 };
 
+
+function keyPressed() {
+  if (spelerX === BAAN_MIDDEN_X && keyCode === 39){ // pijl rechts
+    spelerX = BAAN_RECHTS_X;
+    
+  }
+
+  if (spelerX === BAAN_LINKS_X && keyCode === 39){ // pijl rechts
+    spelerX = BAAN_MIDDEN_X;
+    
+  }
+  
+  if(spelerX === BAAN_MIDDEN_X && keyCode === 37){ // pijl links
+    spelerX = BAAN_LINKS_X;
+  }
+
+  if(spelerX === BAAN_RECHTS_X && keyCode === 37){ // pijl links
+    spelerX = BAAN_MIDDEN_X;
+  }
+}
 /**
  * Checkt botsingen
  * Verwijdert neergeschoten dingen
@@ -70,25 +83,22 @@ var beweegAlles = function () {
  */
 var verwerkBotsing = function () {
   // botsing speler tegen metro
-  if (spelerX - metroLinksX < 50 &&
-      spelerX - metroLinksX >-50 &&
-      spelerY - metroLinksY < 300 &&
-      spelerY - metroLinksY > -300) {
-      console.log('botsing')
+  if (spelerX === BAAN_LINKS_X &&
+      spelerY - metroLinksY > 0 &&
+      spelerY - metroLinksY < 300) {
+        spelStatus = GAMEOVER;
       }
 
-  if (spelerX - metroRechtsX < 50 &&
-      spelerX - metroRechtsX >-50 &&
-      spelerY - metroRechtsY < 300 &&
-      spelerY - metroRechtsY > -300) {
-      console.log('botsing')
+  if ( spelerX === BAAN_RECHTS_X &&
+       spelerY - metroRechtsY > 0 &&
+       spelerY - metroRechtsY < 300) {
+        spelStatus = GAMEOVER;
       }
 
-  if (spelerX - metroMiddenX < 50 &&
-      spelerX - metroMiddenX >-50 &&
-      spelerY - metroMiddenY < 300 &&
-      spelerY - metroMiddenY > -300) {
-      console.log('botsing')
+  if ( spelerX === BAAN_MIDDEN_X &&
+      spelerY - metroMiddenY > 0 &&
+      spelerY - metroMiddenY < 300) {
+        spelStatus = GAMEOVER;
       }
   // botsing kogel tegen metro
 
@@ -169,6 +179,7 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-
+    fill('blue');
+    text("game over lol", 100, 100);
   }
 }
