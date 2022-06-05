@@ -12,6 +12,7 @@
 
 const SPELEN = 1;
 const GAMEOVER = 2;
+const UITLEG = 3;
 var spelStatus = SPELEN;
 
 const BAAN_LINKS_X = 251;
@@ -19,8 +20,8 @@ const BAAN_MIDDEN_X = 625;
 const BAAN_RECHTS_X = 998;
 var spelerX = BAAN_LINKS_X; // x-positie van speler
 var spelerY = 600; // y-positie van speler
-var metroLinksY = 300;
-var metroMiddenY = -200;
+var metroLinksY = 100;
+var metroMiddenY = -400;
 var metroRechtsY = 0;
 var metroLinksX = 150;
 var metroMiddenX = 525;
@@ -173,6 +174,17 @@ function draw() {
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
+    if (metroLinksY === 900) {
+      metroLinksY = 0;
+    }
+
+    if (metroMiddenY === 900) {
+      metroMiddenY = 0;
+    }
+
+    if (metroRechtsY === 900) {
+      metroRechtsY = 0;
+    }
     if (checkGameOver()) {
       spelStatus = GAMEOVER;
     }
@@ -180,6 +192,20 @@ function draw() {
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
     fill('blue');
-    text("game over lol", 100, 100);
+    textSize (100);
+    textAlign(CENTER);
+    text("game over lol", 640, 360);
+    if (keyIsDown(32)) {
+      spelerX = BAAN_LINKS_X
+      metroLinksY = 100;
+      metroMiddenY = -400;
+      metroRechtsY = 0;
+      spelStatus = SPELEN;
+    }
+  }
+  
+
+  if (spelStatus === UITLEG) {
+
   }
 }
