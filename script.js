@@ -14,6 +14,10 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 const UITLEG = 3;
 var spelStatus = SPELEN;
+// var is nu een pixelgetal voor snelheid, nu getal veranderen in woord
+
+
+
 
 const BAAN_LINKS_X = 251;
 const BAAN_MIDDEN_X = 625;
@@ -192,9 +196,9 @@ function draw() {
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
     fill('blue');
-    textSize (100);
+    textSize (80);
     textAlign(CENTER);
-    text("game over lol", 640, 360);
+    text("game over, press space to start", 640, 360);
     if (keyIsDown(32)) {
       spelerX = BAAN_LINKS_X
       metroLinksY = 100;
