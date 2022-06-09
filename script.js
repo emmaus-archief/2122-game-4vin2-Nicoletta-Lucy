@@ -34,6 +34,7 @@ var keyLosVorigeKeer = 0;
 
 var img;
 var img_background;
+var blokSnelheid = 4;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -46,9 +47,10 @@ var beweegAlles = function () {
  
 
   // vijand
-  metroLinksY += 4;
- metroMiddenY += 4;
- metroRechtsY += 4;
+  metroLinksY += blokSnelheid ;
+ metroMiddenY += blokSnelheid ;
+ metroRechtsY += blokSnelheid ;
+ //blokSnelheid = blokSnelheid * 1.01;
 
   // kogel
   if(keyIsDown(38)){
@@ -88,19 +90,19 @@ function keyPressed() {
  */
 var verwerkBotsing = function () {
   // botsing speler tegen metro
-  if (spelerX === BAAN_LINKS_X &&
+  if (spelerX === BAAN_LINKS_X && // de botsing van de eerste (links) alien
       spelerY - metroLinksY > 0 &&
       spelerY - metroLinksY < 300) {
         spelStatus = GAMEOVER;
       }
 
-  if ( spelerX === BAAN_RECHTS_X &&
+  if ( spelerX === BAAN_RECHTS_X && // de botsing van de tweede (rechts) alien
        spelerY - metroRechtsY > 0 &&
        spelerY - metroRechtsY < 300) {
         spelStatus = GAMEOVER;
       }
 
-  if ( spelerX === BAAN_MIDDEN_X &&
+  if ( spelerX === BAAN_MIDDEN_X && // de botsing van de derde (rechts) alien
       spelerY - metroMiddenY > 0 &&
       spelerY - metroMiddenY < 300) {
         spelStatus = GAMEOVER;
@@ -126,7 +128,7 @@ var tekenAlles = function () {
   rect(metroLinksX, metroLinksY, 200, 300);
   rect(metroMiddenX, metroMiddenY, 200, 300);
   rect(metroRechtsX, metroRechtsY, 200, 300);
-  image(img, metroLinksX, metroLinksY, 100, 100);
+  image(img, metroLinksX, metroLinksY, 200, 200);
   
   // kogel
 
