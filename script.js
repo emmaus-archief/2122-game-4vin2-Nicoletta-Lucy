@@ -17,7 +17,12 @@ var spelStatus = SPELEN;
 // var is nu een pixelgetal voor snelheid, nu getal veranderen in woord
 
 
-
+const KEY_LINKS = 37;
+const KEY_RECHTS = 39;
+var keyRechtsDownToen = false;
+var keyRechtsDownNu = false;
+var keyLinksDownToen = false;
+var keyLinksDownNu = false;
 
 const BAAN_LINKS_X = 251;
 const BAAN_MIDDEN_X = 625;
@@ -52,7 +57,7 @@ var beweegAlles = function () {
  metroRechtsY += blokSnelheid ;
  //blokSnelheid = blokSnelheid * 1.01;
 
-  // kogel
+  // speler in de
   if(keyIsDown(38)){
     spelerY -=10;
   }
@@ -61,28 +66,32 @@ var beweegAlles = function () {
     spelerY +=10;
   }
 
+  // speler in x-richting
+  keyRechtsDownToen = keyRechtsDownNu;
+  keyRechtsDownNu = keyIsDown(KEY_RECHTS);
+  if (keyRechtsDownNu===true && keyRechtsDownToen === false ) {
+    if (spelerX === BAAN_MIDDEN_X) { 
+       spelerX = BAAN_RECHTS_X;
+    } 
+    if (spelerX === BAAN_LINKS_X) {
+        spelerX = BAAN_MIDDEN_X
+    }
+  }
+
+
+ keyLinksDownToen = keyLinksDownNu;
+ keyLinksDownNu = keyIsDown (KEY_LINKS);
+ if (keyLinksDownNu === true && keyLinksDownToen === false) {
+   if (spelerX===BAAN_MIDDEN_X) {
+     spelerX = BAAN_LINKS_X;
+   }
+   if (spelerX === BAAN_RECHTS_X) {
+     spelerX = BAAN_MIDDEN_X
+   }
+ };
 };
 
 
-function keyPressed() {
-  if (spelerX === BAAN_MIDDEN_X && keyCode === 39){ // pijl rechts
-    spelerX = BAAN_RECHTS_X;
-    
-  }
-
-  if (spelerX === BAAN_LINKS_X && keyCode === 39){ // pijl rechts
-    spelerX = BAAN_MIDDEN_X;
-    
-  }
-  
-  if(spelerX === BAAN_MIDDEN_X && keyCode === 37){ // pijl links
-    spelerX = BAAN_LINKS_X;
-  }
-
-  if(spelerX === BAAN_RECHTS_X && keyCode === 37){ // pijl links
-    spelerX = BAAN_MIDDEN_X;
-  }
-}
 /**
  * Checkt botsingen
  * Verwijdert neergeschoten dingen
