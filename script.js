@@ -164,7 +164,7 @@ var checkGameOver = function () {
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
 function preload() {
-  img = loadImage('ufo.jpg');
+  img = loadImage('ufo.png');
 
   img_background = loadImage('Hyperspace.png');
 }

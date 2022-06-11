@@ -33,8 +33,8 @@ Basis: uitleg, spelen, afgaan en punten
 - [ ] x. beweeg de tegenspeler of je bal
 - [ ] x. zet punten op het scherm 
 - [ ] x. zorg dat je punten kunt scoren
-- [ ] x. zorg dat je af kunt
-- [ ] x. maak game-over-scherm
+- [x] x. zorg dat je af kunt
+- [x] x. maak game-over-scherm
 - [ ] x. maak uitlegscherm
 
 ### Uitbreidingen 1
