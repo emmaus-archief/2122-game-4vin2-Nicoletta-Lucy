@@ -1,19 +1,19 @@
 Deze game is gebaseerd op het template voor 4HV van het Emmauscollege Rotterdam
 
-## Mijn spel: *naam van het spel*
+## Mijn spel: *aliensurf*
 Gemaakt door:
 - Lucy Li
 - Nicoletta Bouman
 
 ### Beschrijving
-*korte beschrijving van het spel, wat je kunt doen in het spel, wat het doel is*
+het is eigenlijk een sort subway surfer, maar dan wat anders. er zijn drie banen en als je een van de banen raakt ben je af. je moet proberen om zolang mogelijk te proberen overleven.
 
 ## Mijn planning
 Werk de planning af van boven naar beneden<br>
 Geef aan met [x] welke onderdelen af zijn
-- [] 1. blokken maken
-- [] 2. de blokken upgraden
-- [] 3. achtergrond
+- [x] 1. blokken maken
+- [x] 2. de blokken upgraden
+- [x] 3. achtergrond
 - [] 4. coins
 - [] 5. politieman die achter je aan zit
 - [] 6. extra 
@@ -23,11 +23,11 @@ Basis: uitleg, spelen, afgaan en punten
 - [x] 1. maak index.html, style.css en script.js met canvas
 - [x] 2. teken speler (keyIsDown en keyCode met een for looop erbij)
         - Zet je code in de functie tekenAlles()
-- [ ] 3. beweeg speler
+- [x] 3. beweeg speler
         - Zet je code in de functie beweegAlles()
         - Kies de afmeting van speler
         - Gebruik variabalen spelerX en spelerY als middelpunt van de speler
-- [ ] 4. *(pas de volgende stappen in de planning zelf aan)*
+- [x] 4. *(pas de volgende stappen in de planning zelf aan)*
 - [ ] x. teken je tegenspeler (vijanden of dingen die je moet pakken of doelen of ...)
 - [ ] x. teken een bal, kogel (als die in je spel zit)
 - [ ] x. beweeg de tegenspeler of je bal
@@ -39,9 +39,9 @@ Basis: uitleg, spelen, afgaan en punten
 
 ### Uitbreidingen 1
 Uitbreiding: *bedenk iets, bijvoorbeeld meer tegenstanders*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
+- [x] drie banen
+- [x] banen upgraden
+- [x] plaatjes
 
 ### Uitbreidingen 2
 Uitbreiding: *bedenk iets, bijvoorbeeld bewegende achtergrond*
@@ -51,12 +51,12 @@ Uitbreiding: *bedenk iets, bijvoorbeeld bewegende achtergrond*
 
 ### Ideeen voor uitbreidingen
 Kies de uitbreidingen die je leuk vindt en maak je game nog mooier
-- [ ] Gebruik plaatjes voor de vijanden
+- [] Gebruik plaatjes voor de vijanden
 - [ ] Animeer speler
 - [ ] Laat badges vallen die extra's aan speler geven
 - [ ] Maak spel steeds moeilijker door toenemend aantal vijanden met tekenVijand
 - [ ] Maak andere vijanden bij toenemen tekenVijand
-- [ ] Laat vijanden bewegen in patronen
+- [x] Laat vijanden bewegen in patronen
 - [ ] Maak bediening met touch of bewegen van telefoon mogelijk (zorg dat toetsenbordbediening ook blijft werken)
 - [ ] ...
 
