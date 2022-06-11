@@ -63,7 +63,7 @@ var beweegAlles = function () {
   metroRechtsY += blokSnelheid ;
   blokSnelheid = blokSnelheid + 0,5;
   //for (var blokSnelheid = 4; blokSnelheid < 10; blokSnelheid += 0,1 ) {
-    sSPELEN = blokSnelheid + 1
+    //sSPELEN = blokSnelheid + 1
   //};
 
   
