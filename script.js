@@ -61,7 +61,13 @@ var beweegAlles = function () {
   metroLinksY += blokSnelheid ;
   metroMiddenY += blokSnelheid ;
   metroRechtsY += blokSnelheid ;
-  //blokSnelheid = blokSnelheid * 1.01;
+  blokSnelheid = blokSnelheid + 0,5;
+  //for (var blokSnelheid = 4; blokSnelheid < 10; blokSnelheid += 0,1 ) {
+    sSPELEN = blokSnelheid + 1
+  //};
+
+  
+  
 
   // speler in x-richting
   keyRechtsDownToen = keyRechtsDownNu;
@@ -88,35 +94,32 @@ var beweegAlles = function () {
  };
 };
 
-
 /**
  * Checkt botsingen
  * Verwijdert neergeschoten dingen
  * Updatet globale variabelen punten en health
  */
-var verwerkBotsing = function (rectHoogte) {
+var verwerkBotsing = (rectHoogte) => {
   // botsing speler tegen metro
   if (spelerX === BAAN_LINKS_X && // de botsing van de eerste (links) alien
-      spelerY - metroLinksY > 0 &&
-      spelerY - metroLinksY < rectHoogte) {
-        spelStatus = GAMEOVER;
-      }
+    spelerY - metroLinksY > 0 &&
+    spelerY - metroLinksY < rectHoogte) {
+    spelStatus = GAMEOVER;
+  }
 
-  if ( spelerX === BAAN_RECHTS_X && // de botsing van de tweede (rechts) alien
-       spelerY - metroRechtsY > 0 &&
-       spelerY - metroRechtsY < rectHoogte) {
-        spelStatus = GAMEOVER;
-      }
+  if (spelerX === BAAN_RECHTS_X && // de botsing van de tweede (rechts) alien
+    spelerY - metroRechtsY > 0 &&
+    spelerY - metroRechtsY < rectHoogte) {
+    spelStatus = GAMEOVER;
+  }
 
-  if ( spelerX === BAAN_MIDDEN_X && // de botsing van de derde (rechts) alien
-      spelerY - metroMiddenY > 0 &&
-      spelerY - metroMiddenY < rectHoogte) {
-        spelStatus = GAMEOVER;
-      }
+  if (spelerX === BAAN_MIDDEN_X && // de botsing van de derde (rechts) alien
+    spelerY - metroMiddenY > 0 &&
+    spelerY - metroMiddenY < rectHoogte) {
+    spelStatus = GAMEOVER;
+  }
   // botsing kogel tegen metro
-
   // update punten en health
-
 };
 
 /**
