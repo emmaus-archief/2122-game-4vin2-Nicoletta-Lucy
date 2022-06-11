@@ -42,7 +42,14 @@ var img_background;
 var blokSnelheid = 4;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
-/* ********************************************* */
+/* ********************************************* */ 
+
+var timer = function () {
+  fill('white');
+  textSize(80);
+  textAlign(RIGHT);
+  text("0", 840, 200);
+}
 
 /**
  * Updatet globale variabelen met posities van speler, vijanden en kogels
@@ -50,21 +57,11 @@ var blokSnelheid = 4;
 var beweegAlles = function () {
   // speler
  
-
   // vijand
   metroLinksY += blokSnelheid ;
- metroMiddenY += blokSnelheid ;
- metroRechtsY += blokSnelheid ;
- //blokSnelheid = blokSnelheid * 1.01;
-
-  // speler in de
-  if(keyIsDown(38)){
-    spelerY -=10;
-  }
-
-  if(keyIsDown(40)){
-    spelerY +=10;
-  }
+  metroMiddenY += blokSnelheid ;
+  metroRechtsY += blokSnelheid ;
+  //blokSnelheid = blokSnelheid * 1.01;
 
   // speler in x-richting
   keyRechtsDownToen = keyRechtsDownNu;
@@ -97,23 +94,23 @@ var beweegAlles = function () {
  * Verwijdert neergeschoten dingen
  * Updatet globale variabelen punten en health
  */
-var verwerkBotsing = function () {
+var verwerkBotsing = function (rectHoogte) {
   // botsing speler tegen metro
   if (spelerX === BAAN_LINKS_X && // de botsing van de eerste (links) alien
       spelerY - metroLinksY > 0 &&
-      spelerY - metroLinksY < 300) {
+      spelerY - metroLinksY < rectHoogte) {
         spelStatus = GAMEOVER;
       }
 
   if ( spelerX === BAAN_RECHTS_X && // de botsing van de tweede (rechts) alien
        spelerY - metroRechtsY > 0 &&
-       spelerY - metroRechtsY < 300) {
+       spelerY - metroRechtsY < rectHoogte) {
         spelStatus = GAMEOVER;
       }
 
   if ( spelerX === BAAN_MIDDEN_X && // de botsing van de derde (rechts) alien
       spelerY - metroMiddenY > 0 &&
-      spelerY - metroMiddenY < 300) {
+      spelerY - metroMiddenY < rectHoogte) {
         spelStatus = GAMEOVER;
       }
   // botsing kogel tegen metro
@@ -125,19 +122,22 @@ var verwerkBotsing = function () {
 /**
  * Tekent spelscherm
  */
-var tekenAlles = function () {
+var tekenAlles = function (rectHoogte) {
   // achtergrond
-  fill("red");
-  rect(0,0,1280,720);// rode achtergond
+  // rect(0,0,1280,720);// rode achtergond
   image(img_background,0,0,1280,720); // schermvullend plaatje op de achtergrond
 
   // vijand
-  fill(255,255,255);
-  round(random(1, 3));
-  rect(metroLinksX, metroLinksY, 200, 300);
-  rect(metroMiddenX, metroMiddenY, 200, 300);
-  rect(metroRechtsX, metroRechtsY, 200, 300);
-  image(img, metroLinksX, metroLinksY, 200, 200);
+  // fill(255,255,255);
+  // round(random(1, 3));
+  // Teken achtergrond van alien
+  fill("blue"); // achtergrond van alien
+  // rect(metroLinksX, metroLinksY, 200, rectHoogte); // linkeralien vak
+  // rect(metroMiddenX, metroMiddenY, 200, rectHoogte); // middennalien vak
+  // rect(metroRechtsX, metroRechtsY, 200, rectHoogte); // rechteralien vak
+  image(img, metroLinksX, metroLinksY, 200, rectHoogte);
+  image(img, metroMiddenX, metroMiddenY, 200, rectHoogte);
+  image(img, metroRechtsX, metroRechtsY, 200, rectHoogte);
   
   // kogel
 
@@ -186,9 +186,11 @@ function setup() {
  */
 function draw() {
   if (spelStatus === SPELEN) {
+    var rectHoogte = 200;
     beweegAlles();
-    verwerkBotsing();
-    tekenAlles();
+    verwerkBotsing(rectHoogte);
+    tekenAlles(rectHoogte);
+    timer();
     if (metroLinksY === 900) {
       metroLinksY = 0;
     }
@@ -218,9 +220,7 @@ function draw() {
       spelStatus = SPELEN;
     }
   }
-  
-
   if (spelStatus === UITLEG) {
-
+    // Stop hier dingen voor uitleg pagina
   }
 }
