@@ -181,7 +181,7 @@ function setup() {
   createCanvas(1280, 720);
   vijandX=random(300,600);
 }
-
+// x
 /**
  * draw
  * de code in deze functie wordt 50 keer per seconde
