@@ -17,3 +17,35 @@ html, body {
    */ 
   margin: 0px;
 }
+
+#timer {
+  position: absolute;
+  right: 20%;
+  color: white;
+  font-size: xx-large;
+}
+
+#score {
+  position: absolute;
+  left: 20%;
+  color: white;
+  font-size: xx-large;
+}
+
+#highscore {
+  position: absolute;
+  top: 5%;
+  left: 20%;
+  color: white;
+  font-size: xx-large;
+}
+
+.show {
+  display: block;
+}
+
+.noShow {
+  display: none;
+}
+
+
