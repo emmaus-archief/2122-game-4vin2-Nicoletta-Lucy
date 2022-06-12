@@ -9,14 +9,14 @@
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
-
+// const voor de basis dingen
 const SPELEN = 1;
 const GAMEOVER = 2;
 const UITLEG = 3;
 var spelStatus = SPELEN;
 // var is nu een pixelgetal voor snelheid, nu getal veranderen in woord
 
-
+// voor het bewegen van de speler
 const KEY_LINKS = 37;
 const KEY_RECHTS = 39;
 var keyRechtsDownToen = false;
@@ -24,6 +24,7 @@ var keyRechtsDownNu = false;
 var keyLinksDownToen = false;
 var keyLinksDownNu = false;
 
+// banen waarin je kunt bewegen
 const BAAN_LINKS_X = 251;
 const BAAN_MIDDEN_X = 625;
 const BAAN_RECHTS_X = 998;
@@ -37,6 +38,7 @@ var metroMiddenX = 525;
 var metroRechtsX = 900;
 var keyLosVorigeKeer = 0;
 
+// foto's en de snelheid van de aliens
 var img;
 var img_background;
 var blokSnelheid = 4;
@@ -44,7 +46,7 @@ var blokSnelheid = 4;
 /* functies die je gebruikt in je game           */
 /* ********************************************* */ 
 
-var timer = function () {
+var timer = function () { // de tijd meten voor je highscore
   fill('white');
   textSize(80);
   textAlign(RIGHT);
@@ -55,21 +57,17 @@ var timer = function () {
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
 var beweegAlles = function () {
-  // speler
- 
   // vijand
   metroLinksY += blokSnelheid ;
   metroMiddenY += blokSnelheid ;
   metroRechtsY += blokSnelheid ;
-  blokSnelheid = blokSnelheid + 0,5;
-  //for (var blokSnelheid = 4; blokSnelheid < 10; blokSnelheid += 0,1 ) {
-    //sSPELEN = blokSnelheid + 1
-  //};
 
-  
-  
+  // snelheid van de vijanden
+  if (keyIsDown (KEY_LINKS)) {
+    blokSnelheid = blokSnelheid + 0.8;
+    }
 
-  // speler in x-richting
+  // speler in x-richting als je rechter pijl indrukt
   keyRechtsDownToen = keyRechtsDownNu;
   keyRechtsDownNu = keyIsDown(KEY_RECHTS);
   if (keyRechtsDownNu===true && keyRechtsDownToen === false ) {
@@ -81,7 +79,7 @@ var beweegAlles = function () {
     }
   }
 
-
+// speler in x-richting als je linker pijl indrukt
  keyLinksDownToen = keyLinksDownNu;
  keyLinksDownNu = keyIsDown (KEY_LINKS);
  if (keyLinksDownNu === true && keyLinksDownToen === false) {
@@ -99,15 +97,19 @@ var beweegAlles = function () {
  * Verwijdert neergeschoten dingen
  * Updatet globale variabelen punten en health
  */
+
+
+
+
 var verwerkBotsing = (rectHoogte) => {
-  // botsing speler tegen metro
+  // botsing speler tegen alien via alle 3 de banen
   if (spelerX === BAAN_LINKS_X && // de botsing van de eerste (links) alien
     spelerY - metroLinksY > 0 &&
     spelerY - metroLinksY < rectHoogte) {
     spelStatus = GAMEOVER;
   }
 
-  if (spelerX === BAAN_RECHTS_X && // de botsing van de tweede (rechts) alien
+  if (spelerX === BAAN_RECHTS_X && // de botsing van de tweede (midden) alien
     spelerY - metroRechtsY > 0 &&
     spelerY - metroRechtsY < rectHoogte) {
     spelStatus = GAMEOVER;
@@ -118,20 +120,14 @@ var verwerkBotsing = (rectHoogte) => {
     spelerY - metroMiddenY < rectHoogte) {
     spelStatus = GAMEOVER;
   }
-  // botsing kogel tegen metro
-  // update punten en health
+ 
 };
 
 /**
  * Tekent spelscherm
  */
 var tekenAlles = function (rectHoogte) {
-  // achtergrond
-  // rect(0,0,1280,720);// rode achtergond
   image(img_background,0,0,1280,720); // schermvullend plaatje op de achtergrond
-
-  // vijand
-  // fill(255,255,255);
   // round(random(1, 3));
   // Teken achtergrond van alien
   fill("blue"); // achtergrond van alien
@@ -141,16 +137,12 @@ var tekenAlles = function (rectHoogte) {
   image(img, metroLinksX, metroLinksY, 200, rectHoogte);
   image(img, metroMiddenX, metroMiddenY, 200, rectHoogte);
   image(img, metroRechtsX, metroRechtsY, 200, rectHoogte);
-  
-  // kogel
 
-  // speler
+  // vorm van de speler
   fill("white");
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
   ellipse(spelerX, spelerY, 10, 10);
-
-  // punten en health
 
 };
 
@@ -158,8 +150,7 @@ var tekenAlles = function (rectHoogte) {
  * return true als het gameover is
  * anders return false
  */
-var checkGameOver = function () {
-  // check of HP 0 is , of tijd op is, of ...
+var checkGameOver = function () { // kijkt of game over game over is
   return false;
 };
 
@@ -167,17 +158,16 @@ var checkGameOver = function () {
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
 function preload() {
-  img = loadImage('ufo.png');
+  img = loadImage('ufo.png'); // plaatje laden voor alien
 
-  img_background = loadImage('Hyperspace.png');
+  img_background = loadImage('Hyperspace.png'); // achtergrond plaatje
 }
 /**
  * setup
  * de code in deze functie wordt één keer uitgevoerd door
  * de p5 library, zodra het spel geladen is in de browser
  */
-function setup() {
-  // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
+function setup() { // een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
   vijandX=random(300,600);
 }
@@ -209,13 +199,14 @@ function draw() {
       spelStatus = GAMEOVER;
     }
   }
+
+  // teken game-over scherm
   if (spelStatus === GAMEOVER) {
-    // teken game-over scherm
     fill('blue');
     textSize (80);
     textAlign(CENTER);
     text("game over, press space to start", 640, 360);
-    if (keyIsDown(32)) {
+    if (keyIsDown(32)) { // spatie om opnieuw te starten
       spelerX = BAAN_LINKS_X
       metroLinksY = 100;
       metroMiddenY = -400;
@@ -223,7 +214,12 @@ function draw() {
       spelStatus = SPELEN;
     }
   }
-  if (spelStatus === UITLEG) {
-    // Stop hier dingen voor uitleg pagina
+ 
+  // code voor uitleg tekst
+  if (spelStatus === SPELEN) {
+    fill('blue');
+    textSize (40);
+    textAlign(RIGHT);
+    text("use the arrows to play", 640, 100);
   }
 }
