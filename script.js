@@ -43,6 +43,7 @@ var img;
 var img_background;
 var img_uitleg;
 var blokSnelheid = 4;
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */ 
@@ -185,7 +186,7 @@ var verwerkBotsing = (rectHoogte) => {
 };
 
 var verwerkBotsingMetCoins = (rectHoogte) => {
-  // botsing speler met coins op alle 3 de banenso
+  // botsing speler met coins op alle 3 de banen
   if (spelerX === BAAN_LINKS_X && // de botsing van de eerste (links) alien
     spelerY - metroLinksY > 0 &&
     spelerY - metroLinksY < rectHoogte) {
@@ -231,12 +232,15 @@ var tekenAlles = function (rectHoogte) {
 var tekenUitleg = function () {
   image(img_uitleg,0,0,1280,720); // schermvullend plaatje op de achtergrond
   fill('white')
-  rect(500, 150, 350, 70, 70);
+  rect(450, 150, 450, 70, 70);
   fill('orchid');
   textSize (40);
   textAlign(RIGHT);
   text("use '← →' to move", 840, 200); // uitlegscherm tekst
-  text("tap 'space' to start", 840, 200);
+  rect(450, 350, 450, 70, 70)
+  fill('white')
+  text("tap 'space' to start", 840, 400);
+  
 };
 
 /**
@@ -252,7 +256,6 @@ var checkGameOver = function () { // kijkt of game over game over is
 /* ********************************************* */
 function preload() {
   img = loadImage('ufo.png'); // plaatje laden voor alien
-
   img_background = loadImage('space.jpg'); // achtergrond plaatje
   img_uitleg = loadImage('uitlegSpace.jpg'); // achtergrond plaatje
 }
